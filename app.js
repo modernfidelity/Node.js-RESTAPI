@@ -9,10 +9,11 @@
  *
  */ 
 
+
+var API_VERSION = '1.0.0';
+
 // INCLUDE MODULES
 var restify = require('restify');
-	//user = require('user')
-	
 
 // RESTify SERVER SETUP
 var server = restify.createServer({
@@ -42,23 +43,20 @@ function getNode(req, res, next) {
   return next();
 }
 
-function getUser(req, res, next) {
-  res.send('user: ' + req.params.uid);
-  return next();
-}
 
-
-var API_VERSION = '1.0.0';
-
-//@TODO : how best to seperate Req Routes ? 
+// @TODO : how best to seperate Req Routes ? 
 
 // API GET REQUESTS 
 server.get({path: '/hello/:name', version: API_VERSION}, sendV1);
 //server.get({path: PATH, version: '2.0.0'}, sendV2);
 server.get({path: '/article/:aid', version: API_VERSION}, getArticle);
 server.get({path: '/node/:nid', version: API_VERSION}, getNode);
-server.get({path: '/user/:uid', version: API_VERSION}, getUser);
 
+
+// ADD THE SEPERATE RESOURCES FILES (MODULES)
+require('./modules/user')(server);
+require('./modules/node')(server);
+require('./modules/article')(server);
 
 // START REST API SERVER
 server.listen(1935, function() {
