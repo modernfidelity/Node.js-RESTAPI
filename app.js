@@ -23,40 +23,8 @@ var server = restify.createServer({
 
 });
 
-// API GET CALLBACKS
-function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
-}
-
-function sendV1(req, res, next) {
-  res.send('hello: ' + req.params.name);
-  return next();
-}
-
-function getArticle(req, res, next) {
-  res.send('article: ' + req.params.aid);
-  return next();
-}
-
-function getNode(req, res, next) {
-  res.send('node: ' + req.params.nid);
-  return next();
-}
-
-
-// @TODO : how best to seperate Req Routes ? 
-
-// API GET REQUESTS 
-server.get({path: '/hello/:name', version: API_VERSION}, sendV1);
-//server.get({path: PATH, version: '2.0.0'}, sendV2);
-server.get({path: '/article/:aid', version: API_VERSION}, getArticle);
-server.get({path: '/node/:nid', version: API_VERSION}, getNode);
-
-
-// ADD THE SEPERATE RESOURCES FILES (MODULES)
-require('./modules/user')(server);
-require('./modules/node')(server);
-require('./modules/article')(server);
+// ADD ROUTING (CALLBACKS)
+require('./routes')(server);
 
 // START REST API SERVER
 server.listen(1935, function() {

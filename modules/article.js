@@ -9,7 +9,7 @@
 
 function getArticle(req, res, next) {
 
-  res.send('user: ' + req.params.aid);
+  res.send('article: ' + req.params.aid);
   return next();
 
 }
