@@ -1,5 +1,5 @@
-nodejs-restapi
-==============
+Node.JS REST API
+================
 
 A simple REST API to demonstrate building web services in Node.js
 
