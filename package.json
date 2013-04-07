@@ -1,0 +1,21 @@
+{
+  "name": "Node.js-RESTAPI",
+  "version": "1.0.0",
+  "description": "A simple REST API ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/modernfidelity/Node.js-RESTAPI.git"
+  },
+  "keywords": [
+    "REST",
+    "API"
+  ],
+  "author": "@modernfidelity",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "fba90a106e623733df6bc63473a36ec3b220f81c"
+}
